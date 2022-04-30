@@ -1,7 +1,7 @@
 
 # Setting of JBDC for DataSourceConfigurationProperties
-dbcp2.jbdc:
-  driver-class-name: com.mysql.xj.jdbc.Driver
+dbcp2.jdbc:
+  driver-class-name: com.mysql.cj.jdbc.Driver
   url: jdbc:mysql://localhost:3306/tanakinator2?useUnicode=true&characterEncoding=utf8&useSSL=false
   username: tanacchi
   password: password
@@ -10,8 +10,8 @@ dbcp2.jbdc:
   min-idle: 1
 
 # Setting of MyBatis
-mybatis:
-  mapper-locations: classpath:com/example/tanakinator2/repository/mybatis/*.xml
+#mybatis:
+#  mapper-locations: classpath*:/com/example/tanakinator2/repository/mybatis/*.xml
 
 # Setting of logging
 logging.level:
