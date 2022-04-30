@@ -11,7 +11,7 @@
     </resultMap>
 
     <select id="find" resultMap="Choice">
-        SELECT * FROM CHOICE
+        SELECT choice_id, choice_name, choice_value FROM choice
         <where>
             <if test="choiceName != null">
                 CHOICE_NAME = #{choiceName}
@@ -20,6 +20,8 @@
     </select>
 
     <select id="get" resultMap="Choice">
-        SELECT * FROM CHOICE WHERE CHOICE_ID = #{choiceId}
+        SELECT choice_id, choice_name, choice_value
+        FROM choice
+        WHERE CHOICE_ID = #{choiceId}
     </select>
 </mapper>
