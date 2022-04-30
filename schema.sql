@@ -1,3 +1,10 @@
+USE tanakinator2;
+
+DROP TABLE IF EXISTS feature;
+DROP TABLE IF EXISTS solution;
+DROP TABLE IF EXISTS answer;
+DROP TABLE IF EXISTS choice;
+DROP TABLE IF EXISTS question;
 -- Choice table
 CREATE TABLE choice (
     choice_id INT PRIMARY KEY,
@@ -5,11 +12,11 @@ CREATE TABLE choice (
     choice_value FLOAT
 );
 
-INSERT INTO choice(choice_id, choice_name) VALUES(0, "NO", -1.0);
-INSERT INTO choice(choice_id, choice_name) VALUES(1, "LIKELY NO", -0.5);
-INSERT INTO choice(choice_id, choice_name) VALUES(2, "NEUTRAL", 0.0);
-INSERT INTO choice(choice_id, choice_name) VALUES(3, "LIKELY YES", +0.5);
-INSERT INTO choice(choice_id, choice_name) VALUES(4, "YES", +1.0);
+INSERT INTO choice(choice_id, choice_name, choice_value) VALUES(0, "NO", -1.0);
+INSERT INTO choice(choice_id, choice_name, choice_value) VALUES(1, "LIKELY NO", -0.5);
+INSERT INTO choice(choice_id, choice_name, choice_value) VALUES(2, "NEUTRAL", 0.0);
+INSERT INTO choice(choice_id, choice_name, choice_value) VALUES(3, "LIKELY YES", +0.5);
+INSERT INTO choice(choice_id, choice_name, choice_value) VALUES(4, "YES", +1.0);
 
 -- Question
 CREATE TABLE question (
