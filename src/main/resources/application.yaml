@@ -1,1 +1,27 @@
 
+# Setting of JBDC for DataSourceConfigurationProperties
+dbcp2.jbdc:
+  driver-class-name: com.mysql.xj.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/tanakinator2?useUnicode=true&characterEncoding=utf8&useSSL=false
+  username: tanacchi
+  password: password
+  initial-size: 1
+  max-idle: 3
+  min-idle: 1
+
+# Setting of MyBatis
+mybatis:
+  mapper-locations: classpath:com/example/tanakinator2/repository/mybatis/*.xml
+
+# Setting of logging
+logging.level:
+  com.example.tanakinator2.repository: debug
+  org.springframework.jdbc.datasource.DataSourceTransactionManager: debug
+
+# Update tables when application was spawned
+spring.datasource:
+  url: jdbc:mysql://localhost:3306/tanakinator2?useUnicode=true&characterEncoding=utf8&useSSL=false
+  username: tanacchi
+  password: password
+  driverClassName: com.mysql.cj.jdbc.Driver
+  initialization-mode: always
