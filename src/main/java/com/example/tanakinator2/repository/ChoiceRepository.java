@@ -4,7 +4,7 @@ import com.example.tanakinator2.domain.Choice;
 
 import java.util.List;
 
-public interface Tanakinator2Repository {
-    List<Choice> find(String choiceName);
+public interface ChoiceRepository {
+    List<Choice> findChoices(String choiceName);
     Choice getChoice(int choiceId);
 }

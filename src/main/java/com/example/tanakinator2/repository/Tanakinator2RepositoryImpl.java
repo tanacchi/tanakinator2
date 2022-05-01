@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class Tanakinator2RepositoryImpl implements Tanakinator2Repository {
+public class Tanakinator2RepositoryImpl implements ChoiceRepository {
     private static final Logger logger = LoggerFactory.getLogger(Tanakinator2RepositoryImpl.class);
     private final SqlSessionTemplate sqlSessionTemplate;
 
@@ -19,7 +19,7 @@ public class Tanakinator2RepositoryImpl implements Tanakinator2Repository {
     }
 
     @Override
-    public List<Choice> find(String choiceName) {
+    public List<Choice> findChoices(String choiceName) {
         return sqlSessionTemplate.getMapper(ChoiceMapper.class).find(choiceName);
     }
 

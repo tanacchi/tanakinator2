@@ -21,11 +21,11 @@ public class ChoiceDbUnitTests {
     @Nested
     public class FindDbTest extends AbstractTestExecutionListener {
         @Autowired
-        private Tanakinator2Repository target;
+        private ChoiceRepository target;
 
         @Test
         public void testChoiceFindAll() throws Exception {
-            List<Choice> choices = target.find(null);
+            List<Choice> choices = target.findChoices(null);
             assertEquals(choices.size(), 5);
             assertEquals( -1.0, choices.get(0).getChoiceValue());
             assertEquals( -0.5, choices.get(1).getChoiceValue());
