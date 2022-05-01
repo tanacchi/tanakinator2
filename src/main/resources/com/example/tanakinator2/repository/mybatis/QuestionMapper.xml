@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.tanakinator2.repository.mybatis.QuestionMapper">
+    <resultMap id="Question" type="com.example.tanakinator2.domain.Question">
+        <id property="questionId" column="question_id" />
+        <result property="message" column="message" />
+    </resultMap>
+
+    <select id="get" resultMap="Question">
+        SELECT question_id, message FROM question
+        WHERE QUESTION_ID = #{questionId}
+    </select>
+
+    <select id="lock" resultMap="Question">
+        SELECT question_id, message FROM question
+        WHERE QUESTION_ID = #{questionId}
+        FOR UPDATE
+    </select>
+
+    <insert id="add"
+            parameterType="com.example.tanakinator2.domain.Question"
+            keyProperty="questionId">
+        <selectKey keyProperty="questionId" resultType="int" order="BEFORE">
+            SELECT COALESCE(MAX(question_id), 0) + 1 FROM question
+        </selectKey>
+        INSERT INTO question(question_id, message)
+        VALUES(#{questionId}, #{message})
+    </insert>
+    
+    <update id="set"
+            parameterType="com.example.tanakinator2.domain.Question">
+        UPDATE question
+        <set>
+            <if test="message != null">
+                message = #{message},
+            </if>
+        </set>
+        WHERE question_id = #{questionId}
+    </update>
+
+    <delete id="delete"
+            parameterType="com.example.tanakinator2.domain.Question">
+        DELETE FROM question
+        WHERE question_id = #{questionId}
+    </delete>
+</mapper>
