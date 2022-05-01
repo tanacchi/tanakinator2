@@ -4,6 +4,9 @@ public class Question {
     private int questionId;
     private String message;
 
+    public Question() {
+    }
+
     public Question(int questionId, String message) {
         this.questionId = questionId;
         this.message = message;
