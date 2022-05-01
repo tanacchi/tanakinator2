@@ -14,7 +14,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 
 import java.util.List;
 
-public class DbUnitTests {
+public class ChoiceDbUnitTests {
 
     @SpringBootTest(classes = Tanakinator2Application.class)
     @TestExecutionListeners({DependencyInjectionTestExecutionListener.class, FindTestExecutionLister.class})
