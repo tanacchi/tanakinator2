@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class Tanakinator2RepositoryImpl implements ChoiceRepository, QuestionRepository {
+public class Tanakinator2RepositoryImpl implements Tanakinator2Repository {
     private static final Logger logger = LoggerFactory.getLogger(Tanakinator2RepositoryImpl.class);
     private final SqlSessionTemplate sqlSessionTemplate;
 
@@ -51,7 +51,7 @@ public class Tanakinator2RepositoryImpl implements ChoiceRepository, QuestionRep
     }
 
     @Override
-    public Question lock(int questionId) {
+    public Question lockQuestion(int questionId) {
         Question question = sqlSessionTemplate.getMapper(QuestionMapper.class).lock(questionId);
         if (question == null) {
             logger.info("Question not found (id = {}).", question.getQuestionId());
@@ -61,12 +61,12 @@ public class Tanakinator2RepositoryImpl implements ChoiceRepository, QuestionRep
     }
 
     @Override
-    public void insert(Question question) {
+    public void insertQuestion(Question question) {
         sqlSessionTemplate.getMapper(QuestionMapper.class).add(question);
     }
 
     @Override
-    public void update(Question question) {
+    public void updateQuestion(Question question) {
         int affected = sqlSessionTemplate.getMapper(QuestionMapper.class).set(question);
         if (affected != 1) {
             logger.info("Question not found (id = {}).", question.getQuestionId());
@@ -75,7 +75,7 @@ public class Tanakinator2RepositoryImpl implements ChoiceRepository, QuestionRep
     }
 
     @Override
-    public void delete(Question question) {
+    public void deleteQuestion(Question question) {
         int affected = sqlSessionTemplate.getMapper(QuestionMapper.class).delete(question);
         if (affected != 1) {
             logger.info("Question not found (id = {}).", question.getQuestionId());

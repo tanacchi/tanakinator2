@@ -7,8 +7,8 @@ import java.util.List;
 public interface QuestionRepository {
     Question getQuestionById(int questionId);
     List<Question> getQuestionsById(List<Integer> questionIds);
-    Question lock(int questionId);
-    void insert(Question question);
-    void update(Question question);
-    void delete(Question question);
+    Question lockQuestion(int questionId);
+    void insertQuestion(Question question);
+    void updateQuestion(Question question);
+    void deleteQuestion(Question question);
 }

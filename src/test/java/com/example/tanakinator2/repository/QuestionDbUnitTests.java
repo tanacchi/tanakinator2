@@ -72,7 +72,7 @@ public class QuestionDbUnitTests {
         public void testInsert() throws Exception {
             Question question = new Question();
             question.setMessage("人間？");
-            target.insert(question);
+            target.insertQuestion(question);
             DbUnitUtil.assertMutateResult(
                     dataSourceConfiguration.dataSource(),
                     "question",

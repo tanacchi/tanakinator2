@@ -1,13 +1,12 @@
 package com.example.tanakinator2.controller;
 
 import com.example.tanakinator2.domain.Choice;
+import com.example.tanakinator2.domain.Question;
+import com.example.tanakinator2.service.ChoiceService;
 import com.example.tanakinator2.service.Tanakinator2Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,5 +34,26 @@ public class Tanakinator2RestController {
     @GetMapping(path = "choice/{choiceId}", produces = "application/json")
     public Choice choiceDetail(@PathVariable int choiceId) {
         return service.getChoice(choiceId);
+    }
+
+    @GetMapping(path = "question/{questionId}", produces = "application/json")
+    public Question questionDetail(@PathVariable int questionId) {
+        return service.getQuestion(questionId);
+    }
+
+    @PostMapping(path = "question/add", produces = "application/json")
+    public void questionPost(@RequestBody Question question) {
+        service.addQuestion(question);
+    }
+
+    @PatchMapping(path = "question/{questionId}", produces = "application/json")
+    public void questionPatch(@PathVariable int questionId, @RequestBody Question question) {
+        question.setQuestionId(questionId);
+        service.setQuestion(question);
+    }
+
+    @DeleteMapping(path = "question/{questionId}")
+    public void questionDelete(@PathVariable int questionId) {
+        service.removeQuestion(questionId);
     }
 }
