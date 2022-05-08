@@ -25,35 +25,4 @@ public class Tanakinator2RestController {
     public String home() {
         return "Hello";
     }
-
-    @GetMapping(path = "choice", produces = "application/json")
-    public List<Choice> choiceDetail() {
-        return service.getAllChoices();
-    }
-
-    @GetMapping(path = "choice/{choiceId}", produces = "application/json")
-    public Choice choiceDetail(@PathVariable int choiceId) {
-        return service.getChoice(choiceId);
-    }
-
-    @GetMapping(path = "question/{questionId}", produces = "application/json")
-    public Question questionDetail(@PathVariable int questionId) {
-        return service.getQuestion(questionId);
-    }
-
-    @PostMapping(path = "question/add", produces = "application/json")
-    public void questionPost(@RequestBody Question question) {
-        service.addQuestion(question);
-    }
-
-    @PatchMapping(path = "question/{questionId}", produces = "application/json")
-    public void questionPatch(@PathVariable int questionId, @RequestBody Question question) {
-        question.setQuestionId(questionId);
-        service.setQuestion(question);
-    }
-
-    @DeleteMapping(path = "question/{questionId}")
-    public void questionDelete(@PathVariable int questionId) {
-        service.removeQuestion(questionId);
-    }
 }
