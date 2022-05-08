@@ -4,7 +4,7 @@ import com.example.tanakinator2.domain.Choice;
 
 import java.util.List;
 
-public interface Tanakinator2Service {
+public interface ChoiceService {
     Choice getChoice(int choiceId);
     List<Choice> getAllChoices();
 }
