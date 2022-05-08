@@ -35,7 +35,7 @@ public class Tanakinator2RepositoryImpl implements Tanakinator2Repository {
     public Question getQuestionById(int questionId) {
         Question question = sqlSessionTemplate.getMapper(QuestionMapper.class).get(questionId);
         if (question == null) {
-            logger.info("Question not found (id = {}).", question.getQuestionId());
+            logger.info("Question not found (id = {}).", questionId);
             throw new ResourceNotFoundException("Question not found.");
         }
         return question;
