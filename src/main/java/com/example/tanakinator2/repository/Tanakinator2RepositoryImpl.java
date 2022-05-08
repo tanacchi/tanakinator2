@@ -36,7 +36,7 @@ public class Tanakinator2RepositoryImpl implements Tanakinator2Repository {
         Question question = sqlSessionTemplate.getMapper(QuestionMapper.class).get(questionId);
         if (question == null) {
             logger.info("Question not found (id = {}).", question.getQuestionId());
-            throw new RuntimeException("Question not found.");
+            throw new ResourceNotFoundException("Question not found.");
         }
         return question;
     }
@@ -55,7 +55,7 @@ public class Tanakinator2RepositoryImpl implements Tanakinator2Repository {
         Question question = sqlSessionTemplate.getMapper(QuestionMapper.class).lock(questionId);
         if (question == null) {
             logger.info("Question not found (id = {}).", question.getQuestionId());
-            throw new RuntimeException("Question not found.");
+            throw new ResourceNotFoundException("Question not found.");
         }
         return question;
     }
@@ -70,7 +70,7 @@ public class Tanakinator2RepositoryImpl implements Tanakinator2Repository {
         int affected = sqlSessionTemplate.getMapper(QuestionMapper.class).set(question);
         if (affected != 1) {
             logger.info("Question not found (id = {}).", question.getQuestionId());
-            throw new RuntimeException("Question not found.");
+            throw new ResourceNotFoundException("Question not found.");
         }
     }
 
@@ -79,7 +79,7 @@ public class Tanakinator2RepositoryImpl implements Tanakinator2Repository {
         int affected = sqlSessionTemplate.getMapper(QuestionMapper.class).delete(question);
         if (affected != 1) {
             logger.info("Question not found (id = {}).", question.getQuestionId());
-            throw new RuntimeException("Question not found.");
+            throw new ResourceNotFoundException("Question not found.");
         }
     }
 }
